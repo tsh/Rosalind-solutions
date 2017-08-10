@@ -1,9 +1,11 @@
-N = 33
+N = 5
 K = 3
 
-prev_gen, next_gen = 0, 1
+prev_gen, cur_gen = 1, 1
 
-for i in range(1, N):
-    prev_gen, next_gen = next_gen, prev_gen * K + next_gen
+for i in range(2, N):
+    next_gen = prev_gen * K + cur_gen
+    prev_gen = cur_gen
+    cur_gen = next_gen
 
-print next_gen
+print cur_gen
