@@ -14,7 +14,7 @@ for month in range(2, N):
     if month < M:
         dead = 0
     elif month == M:
-        dead = memo[0]  # here (month - (M+1)) < 0 fix this be taking first value
+        dead = 1  #  month - (M+1) < 0; first pair of rabbit is dead
     else:
         dead = memo[month - (M+1)]
     memo[month] = (memo[month - 1] + memo[month - 2]) - dead
