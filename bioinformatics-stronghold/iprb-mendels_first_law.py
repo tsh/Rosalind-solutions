@@ -10,3 +10,8 @@ k = 2  # AA  homozygous dominant
 m = 2  # Aa  heterozygous
 n = 2  # aa  homozygous recessive
 population = k + m + n
+
+for parent1 in ('AA', 'Aa'):
+    for parent2 in ('AA', 'Aa'):
+        childrens = product(parent1, parent2)
+        print [''.join(c) for c in childrens]
