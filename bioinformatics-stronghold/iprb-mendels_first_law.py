@@ -11,7 +11,20 @@ m = 2  # Aa  heterozygous
 n = 2  # aa  homozygous recessive
 population = k + m + n
 
-for parent1 in ('AA', 'Aa'):
-    for parent2 in ('AA', 'Aa'):
+from itertools import product
+
+all_pop = []
+all_pop.extend(['AA']*k)
+all_pop.extend(['Aa']*m)
+all_pop.extend(['aa']*n)
+
+all_childrens = []
+for parent1 in all_pop:
+    chosen = all_pop[:]
+    chosen.remove(parent1)
+    for parent2 in chosen:
         childrens = product(parent1, parent2)
-        print [''.join(c) for c in childrens]
+        all_childrens.extend([''.join(c) for c in childrens])
+
+dominants = filter(lambda c: 'A' in c, all_childrens)
+print(float(len(list(dominants))) / len(all_childrens))
