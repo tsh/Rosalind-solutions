@@ -20,7 +20,7 @@ for parent1 in population:
     chosen = population[:]
     chosen.remove(parent1)
     for parent2 in chosen:
-        # get all possible children from 2 parents.
+        # get all possible children from 2 parents. Punnet square
         children = product(parent1, parent2)
         all_children.extend([''.join(c) for c in children])
 
