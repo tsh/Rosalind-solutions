@@ -6,25 +6,24 @@ Return: The probability that two randomly selected mating organisms will produce
 possessing a dominant allele (and thus displaying the dominant phenotype). Assume that any two organisms can mate.
 """
 
+from itertools import product
+
 k = 2  # AA  homozygous dominant
 m = 2  # Aa  heterozygous
 n = 2  # aa  homozygous recessive
-population = k + m + n
 
-from itertools import product
+population = (['AA'] * k) + (['Aa'] * m) + (['aa'] * n)
 
-all_pop = []
-all_pop.extend(['AA']*k)
-all_pop.extend(['Aa']*m)
-all_pop.extend(['aa']*n)
-
-all_childrens = []
-for parent1 in all_pop:
-    chosen = all_pop[:]
+all_children = []
+for parent1 in population:
+    # remove selected parent from population.
+    chosen = population[:]
     chosen.remove(parent1)
     for parent2 in chosen:
-        childrens = product(parent1, parent2)
-        all_childrens.extend([''.join(c) for c in childrens])
+        # get all possible children from 2 parents.
+        children = product(parent1, parent2)
+        all_children.extend([''.join(c) for c in children])
 
-dominants = filter(lambda c: 'A' in c, all_childrens)
-print(float(len(list(dominants))) / len(all_childrens))
+dominants = filter(lambda c: 'A' in c, all_children)
+# float for python2
+print(float(len(list(dominants))) / len(all_children))
