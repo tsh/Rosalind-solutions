@@ -6,6 +6,7 @@ followed by a list of locations in the protein string where the motif can be fou
 
 import requests
 
+
 url = 'http://www.uniprot.org/uniprot/{}.fasta'
 dataset_raw = """
 A2Z669
