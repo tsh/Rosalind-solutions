@@ -33,9 +33,12 @@ for i in range(len(matrix[0])):
         c[dna[i]] += 1
     consensus += c.most_common(1)[0][0]
     profile['A'].append(str(c['A']))
-    profile['C'].append(c['C'])
-    profile['G'].append(c['G'])
-    profile['T'].append(c['T'])
+    profile['C'].append(str(c['C']))
+    profile['G'].append(str(c['G']))
+    profile['T'].append(str(c['T']))
 
 print consensus
 print 'A: ', ' '.join(profile['A'])
+print 'C: ', ' '.join(profile['C'])
+print 'G: ', ' '.join(profile['G'])
+print 'T: ', ' '.join(profile['T'])
